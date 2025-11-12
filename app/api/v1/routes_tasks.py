@@ -7,6 +7,7 @@ from fastapi_limiter.depends import RateLimiter
 from sqlalchemy.ext.asyncio import AsyncSession
 
 
+from ...app_users.crud import get_users_with_active_goal
 from app.core.database import get_db
 from app.core.deps import get_current_active_subscriber
 from app.app_users.models import User
@@ -16,7 +17,7 @@ from app.app_goals.schemas import GoalUpdate
 from app.app_goals.crud import get_active_goal, get_goal, update_goal
 from app.app_tasks.models import TaskStatus
 from app.app_tasks.schemas import TaskResponse
-from app.app_tasks.crud import get_task, list_goal_tasks, update_task
+from app.app_tasks.crud import create_daily_task_by_id, get_task, list_goal_tasks, update_task
 from app.app_tasks.utils import remove_user_tasks
 
 
@@ -52,3 +53,13 @@ async def update_task_status(task_id: UUID, db: AsyncSession = Depends(get_db), 
 		update_goal(db=db, db_goal=task.goal, goal_in=GoalUpdate(status=GoalStatus.completed))
 		remove_user_tasks(task.goal.celery_task_ids)
 	return MessageResponse(message="Task marked as done successfully")
+
+
+@router.post("/create", response_model=MessageResponse, dependencies=[Depends(RateLimiter(times=10, seconds=60))])
+async def create_daily_task(db: AsyncSession = Depends(get_db)):
+	users = await get_users_with_active_goal(db)
+	if users:
+		for user in users:
+			create_daily_task_by_id(db=db, user_id=user.id)
+
+	return MessageResponse(message=f"Daily tasks for {users.length} users has been created successfully")

@@ -1,9 +1,10 @@
-from typing import Optional
+from typing import List, Optional
 from uuid import UUID
 
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import delete, select
 
+from app.app_goals.models import GoalStatus
 from app.core.security import hash_password
 from app.app_users.models import PasswordResetToken, User
 from app.app_users.schemas import AuthRequest, OAuthRequest, PasswordResetTokenRequest
@@ -75,3 +76,8 @@ async def reset_password_action(db: AsyncSession, db_user: User, db_token: Passw
 	db_user.password_hash = hash_password(new_password)
 	db_token.used = True
 	await db.commit()
+
+
+async def get_users_with_active_goal(db: AsyncSession) -> Optional[List[User]]:
+	users = await db.execute(select(User).where(User.goals.status == GoalStatus.active))
+	return users.scalars.all()
