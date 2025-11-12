@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from core.database import Base, sync_engine
+from app.core.database import Base, sync_engine
 
 from app.app_users.models import User, PasswordResetToken
 from app.app_goals.models import Goal
