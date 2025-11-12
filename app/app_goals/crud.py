@@ -4,8 +4,8 @@ from typing import Optional, List
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
-from .models import Goal, GoalStatus
-from .schemas import GoalRequest, GoalUpdate
+from app.app_goals.models import Goal, GoalStatus
+from app.app_goals.schemas import GoalRequest, GoalUpdate
 
 
 def _calculate_end_date(start_date, target_days):

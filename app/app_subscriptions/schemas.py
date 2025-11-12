@@ -6,7 +6,7 @@ from uuid import UUID
 
 from pydantic import BaseModel, Field, ConfigDict
 
-from app_subscriptions.models import SubscriptionStatus
+from app.app_subscriptions.models import SubscriptionStatus
 
 
 class SubscriptionRequest(BaseModel):

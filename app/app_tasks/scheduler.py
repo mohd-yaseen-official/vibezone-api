@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta, timezone
 
-from app_tasks.celery import celery
-from app_tasks.tasks import create_daily_task, create_monthly_task, create_weekly_task
+from app.app_tasks.celery import celery
+from app.app_tasks.tasks import create_daily_task, create_monthly_task, create_weekly_task
 
 
 def schedule_user_task(user_id: str, start_time: datetime = None):

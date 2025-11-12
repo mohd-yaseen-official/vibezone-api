@@ -7,17 +7,17 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from google.oauth2 import id_token
 from google.auth.transport import requests as google_requests
 
-from core.config import settings
-from core.database import get_db
-from core.security import create_access_token, verify_password
-from core.deps import get_current_user
-from lib.resend import send_reset_link
+from app.core.config import settings
+from app.core.database import get_db
+from app.core.security import create_access_token, verify_password
+from app.core.deps import get_current_user
+from app.lib.resend import send_reset_link
 
-from app_users.models import User
-from app_users.schemas import AuthRequest, ForgotPasswordRequest, GoogleLoginRequest, LoginResponse, MessageResponse, ResetPasswordRequest, UserResponse, PasswordResetTokenRequest
-from app_users.crud import create_oauth_user, create_reset_token, create_user, delete_reset_tokens, get_reset_token_by_value, get_user_by_email, get_user_by_id, reset_password_action, soft_delete_user
-from app_goals.crud import get_active_goal, soft_delete_goal
-from app_tasks.utils import remove_user_tasks
+from app.app_users.models import User
+from app.app_users.schemas import AuthRequest, ForgotPasswordRequest, GoogleLoginRequest, LoginResponse, MessageResponse, ResetPasswordRequest, UserResponse, PasswordResetTokenRequest
+from app.app_users.crud import create_oauth_user, create_reset_token, create_user, delete_reset_tokens, get_reset_token_by_value, get_user_by_email, get_user_by_id, reset_password_action, soft_delete_user
+from app.app_goals.crud import get_active_goal, soft_delete_goal
+from app.app_tasks.utils import remove_user_tasks
 
 
 router = APIRouter()

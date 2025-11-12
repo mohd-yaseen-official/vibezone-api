@@ -5,17 +5,17 @@ from fastapi import APIRouter, Depends, HTTPException, status, Query
 from fastapi_limiter.depends import RateLimiter
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from core.database import get_db
-from core.deps import get_current_active_subscriber
-from app_users.models import User
-from app_goals.crud import create_new_goal, get_active_goal, get_goal, get_goals, soft_delete_goal, update_goal
-from app_goals.schemas import GoalRequest, GoalResponse, GoalStatus, GoalUpdate
-from app_tasks.schemas import TaskResponse
-from app_tasks.crud import list_goal_tasks
-from app_tasks.scheduler import schedule_user_task
-from app_tasks.utils import remove_user_tasks
-from app_reports.schemas import MonthlyReportResponse, WeeklyReportResponse
-from app_reports.crud import list_monthly_reports, list_weekly_reports
+from app.core.database import get_db
+from app.core.deps import get_current_active_subscriber
+from app.app_users.models import User
+from app.app_goals.crud import create_new_goal, get_active_goal, get_goal, get_goals, soft_delete_goal, update_goal
+from app.app_goals.schemas import GoalRequest, GoalResponse, GoalStatus, GoalUpdate
+from app.app_tasks.schemas import TaskResponse
+from app.app_tasks.crud import list_goal_tasks
+from app.app_tasks.scheduler import schedule_user_task
+from app.app_tasks.utils import remove_user_tasks
+from app.app_reports.schemas import MonthlyReportResponse, WeeklyReportResponse
+from app.app_reports.crud import list_monthly_reports, list_weekly_reports
 
 
 router = APIRouter()

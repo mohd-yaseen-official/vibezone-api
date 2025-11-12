@@ -5,12 +5,12 @@ from fastapi_limiter import FastAPILimiter
 from redis.asyncio import from_url as redis_from_url
 import stripe
 
-from core.config import settings
-from api.v1.routes_auth import router as auth_router
-from api.v1.routes_goals import router as goals_router
-from api.v1.routes_tasks import router as tasks_router
-from api.v1.routes_reports import router as reports_router
-from api.v1.routes_subscriptions import router as subscriptions_router
+from app.core.config import settings
+from app.api.v1.routes_auth import router as auth_router
+from app.api.v1.routes_goals import router as goals_router
+from app.api.v1.routes_tasks import router as tasks_router
+from app.api.v1.routes_reports import router as reports_router
+from app.api.v1.routes_subscriptions import router as subscriptions_router
 
 
 stripe.api_key = settings.stripe_secret_key

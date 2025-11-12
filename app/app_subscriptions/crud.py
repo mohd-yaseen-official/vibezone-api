@@ -8,10 +8,10 @@ from uuid import UUID
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from core.config import settings
-from app_subscriptions.models import StripeSubscription, SubscriptionStatus
-from app_subscriptions.schemas import SubscriptionRequest, SubscriptionUpdate
-from app_users.models import User
+from app.core.config import settings
+from app.app_subscriptions.models import StripeSubscription, SubscriptionStatus
+from app.app_subscriptions.schemas import SubscriptionRequest, SubscriptionUpdate
+from app.app_users.models import User
 
 
 logger = logging.getLogger(__name__)

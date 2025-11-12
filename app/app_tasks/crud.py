@@ -4,8 +4,8 @@ from uuid import UUID
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, desc
 
-from app_tasks.schemas import TaskCreate
-from app_tasks.models import Task, TaskStatus
+from app.app_tasks.schemas import TaskCreate
+from app.app_tasks.models import Task, TaskStatus
 
 
 async def create_task(db: AsyncSession, task_in: TaskCreate) -> Task:

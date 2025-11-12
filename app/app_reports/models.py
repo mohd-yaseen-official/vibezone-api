@@ -4,8 +4,8 @@ from sqlalchemy import Column, Integer, Date, Text, Numeric, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.dialects.postgresql import UUID
 
-from core.database import Base
-from common.mixins import CreatedUpdatedAtMixin, IDMixin
+from app.core.database import Base
+from app.common.mixins import CreatedUpdatedAtMixin, IDMixin
 
 
 class WeeklyReport(Base, IDMixin, CreatedUpdatedAtMixin):

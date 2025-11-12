@@ -9,19 +9,19 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 import stripe
 
-from core.config import settings
-from core.database import get_db
-from core.deps import get_current_active_subscriber, get_current_user
-from app_users.models import User
-from app_subscriptions.models import SubscriptionStatus
-from app_subscriptions.schemas import (
+from app.core.config import settings
+from app.core.database import get_db
+from app.core.deps import get_current_active_subscriber, get_current_user
+from app.app_users.models import User
+from app.app_subscriptions.models import SubscriptionStatus
+from app.app_subscriptions.schemas import (
     CheckoutSessionResponse, 
     SubscriptionStatusResponse, 
     SubscriptionCancelResponse,
     SubscriptionActionResponse,
     SubscriptionRequest
 )
-from app_subscriptions.crud import create_subscription, get_user_subscription, is_subscription_active, upsert_subscription_from_stripe
+from app.app_subscriptions.crud import create_subscription, get_user_subscription, is_subscription_active, upsert_subscription_from_stripe
 
 
 logger = logging.getLogger(__name__)

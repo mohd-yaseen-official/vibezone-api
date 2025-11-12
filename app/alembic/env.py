@@ -8,11 +8,11 @@ load_dotenv()
 
 from core.database import Base, sync_engine
 
-from app_users.models import User, PasswordResetToken
-from app_goals.models import Goal
-from app_tasks.models import Task
-from app_reports.models import MonthlyReport, WeeklyReport
-from app_subscriptions.models import StripeSubscription
+from app.app_users.models import User, PasswordResetToken
+from app.app_goals.models import Goal
+from app.app_tasks.models import Task
+from app.app_reports.models import MonthlyReport, WeeklyReport
+from app.app_subscriptions.models import StripeSubscription
 
 config = context.config
 

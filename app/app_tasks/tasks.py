@@ -4,18 +4,18 @@ from uuid import UUID
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from core.database import engine
-from app_tasks.celery import celery
-from app_goals.models import Goal
-from app_goals.schemas import GoalUpdate
-from app_goals.crud import get_active_goal, update_goal
-from app_tasks.models import TaskDifficulty
-from app_tasks.schemas import TaskCreate, TaskStatus
-from app_tasks.crud import create_task, get_active_task, get_last_incomplete_task, update_task
-from app_tasks.utils import remove_user_tasks
-from app_reports.schemas import MonthlyReportRequest, WeeklyReportRequest
-from app_reports.crud import create_monthly_report, create_weekly_report
-from app_tasks.ai import generate_month_report, generate_next_task, generate_week_report
+from app.core.database import engine
+from app.app_tasks.celery import celery
+from app.app_goals.models import Goal
+from app.app_goals.schemas import GoalUpdate
+from app.app_goals.crud import get_active_goal, update_goal
+from app.app_tasks.models import TaskDifficulty
+from app.app_tasks.schemas import TaskCreate, TaskStatus
+from app.app_tasks.crud import create_task, get_active_task, get_last_incomplete_task, update_task
+from app.app_tasks.utils import remove_user_tasks
+from app.app_reports.schemas import MonthlyReportRequest, WeeklyReportRequest
+from app.app_reports.crud import create_monthly_report, create_weekly_report
+from app.app_tasks.ai import generate_month_report, generate_next_task, generate_week_report
 
 
 AsyncSessionLocal = sessionmaker(bind=engine, class_=AsyncSession, expire_on_commit=False)

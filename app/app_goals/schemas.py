@@ -5,7 +5,7 @@ from uuid import UUID
 
 from pydantic import BaseModel, Field
 
-from app_goals.models import GoalStatus
+from app.app_goals.models import GoalStatus
 
 
 class GoalRequest(BaseModel):

@@ -4,7 +4,7 @@ from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict, EmailStr
 
-from app_users.models import AuthProvider
+from app.app_users.models import AuthProvider
 
 
 class AuthRequest(BaseModel):

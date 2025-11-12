@@ -7,17 +7,17 @@ from fastapi_limiter.depends import RateLimiter
 from sqlalchemy.ext.asyncio import AsyncSession
 
 
-from core.database import get_db
-from core.deps import get_current_active_subscriber
-from app_users.models import User
-from app_users.schemas import MessageResponse
-from app_goals.models import GoalStatus
-from app_goals.schemas import GoalUpdate
-from app_goals.crud import get_active_goal, get_goal, update_goal
-from app_tasks.models import TaskStatus
-from app_tasks.schemas import TaskResponse
-from app_tasks.crud import get_task, list_goal_tasks, update_task
-from app_tasks.utils import remove_user_tasks
+from app.core.database import get_db
+from app.core.deps import get_current_active_subscriber
+from app.app_users.models import User
+from app.app_users.schemas import MessageResponse
+from app.app_goals.models import GoalStatus
+from app.app_goals.schemas import GoalUpdate
+from app.app_goals.crud import get_active_goal, get_goal, update_goal
+from app.app_tasks.models import TaskStatus
+from app.app_tasks.schemas import TaskResponse
+from app.app_tasks.crud import get_task, list_goal_tasks, update_task
+from app.app_tasks.utils import remove_user_tasks
 
 
 router = APIRouter()

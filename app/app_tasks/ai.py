@@ -5,10 +5,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, and_
 from google import genai
 
-from core.config import settings
-from core.database import get_db
-from app_tasks.utils import create_monthly_report_prompt, create_next_task_prompt, create_weekly_report_prompt
-from app_tasks.models import Task
+from app.core.config import settings
+from app.core.database import get_db
+from app.app_tasks.utils import create_monthly_report_prompt, create_next_task_prompt, create_weekly_report_prompt
+from app.app_tasks.models import Task
 
 
 client = genai.Client(api_key=settings.gemini_api_key)

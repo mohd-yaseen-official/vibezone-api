@@ -4,12 +4,12 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi_limiter.depends import RateLimiter
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from core.database import get_db
-from core.deps import get_current_active_subscriber
-from app_users.models import User
-from app_goals.crud import get_active_goal
-from app_reports.schemas import MonthlyReportResponse, WeeklyReportResponse
-from app_reports.crud import list_monthly_reports, list_weekly_reports
+from app.core.database import get_db
+from app.core.deps import get_current_active_subscriber
+from app.app_users.models import User
+from app.app_goals.crud import get_active_goal
+from app.app_reports.schemas import MonthlyReportResponse, WeeklyReportResponse
+from app.app_reports.crud import list_monthly_reports, list_weekly_reports
 
 
 router = APIRouter()

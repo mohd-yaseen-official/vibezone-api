@@ -5,7 +5,7 @@ from uuid import UUID
 
 from pydantic import BaseModel, Field
 
-from app_tasks.models import TaskDifficulty, TaskStatus
+from app.app_tasks.models import TaskDifficulty, TaskStatus
 
 
 class TaskCreate(BaseModel):

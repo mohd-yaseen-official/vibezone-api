@@ -3,8 +3,8 @@ from uuid import UUID
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, desc
 
-from app_reports.models import WeeklyReport, MonthlyReport
-from app_reports.schemas import WeeklyReportRequest, MonthlyReportRequest
+from app.app_reports.models import WeeklyReport, MonthlyReport
+from app.app_reports.schemas import WeeklyReportRequest, MonthlyReportRequest
 
 
 async def create_weekly_report(db: AsyncSession, data: WeeklyReportRequest) -> WeeklyReport:

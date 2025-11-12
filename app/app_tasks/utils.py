@@ -1,8 +1,8 @@
 import json
 from typing import Any, Dict, List
 
-from app_tasks import celery
-from app_goals.models import Goal
+from app.app_tasks import celery
+from app.app_goals.models import Goal
 
 
 def _tasks_to_history(tasks: List[Any], max_entries: int = 120) -> List[Dict[str, Any]]:

@@ -4,9 +4,9 @@ from uuid import UUID
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import delete, select
 
-from core.security import hash_password
-from app_users.models import PasswordResetToken, User
-from app_users.schemas import AuthRequest, OAuthRequest, PasswordResetTokenRequest
+from app.core.security import hash_password
+from app.app_users.models import PasswordResetToken, User
+from app.app_users.schemas import AuthRequest, OAuthRequest, PasswordResetTokenRequest
 
 
 async def create_user(db: AsyncSession, user_in: AuthRequest) -> User:
