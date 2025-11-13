@@ -30,13 +30,14 @@ async def generate_next_task(db: AsyncSession, goal):
 			)
 			return json.loads(resp.text)
 		except ServerError as e:
-			if e.status_code == 503 and attempt < max_retries - 1:
+			if attempt < max_retries - 1:
 				await asyncio.sleep(retry_delay * (attempt + 1))
 				continue
 			else:
 				raise
 		except (APIError, json.JSONDecodeError) as e:
 			raise
+
 
 async def generate_week_report(goal, db: AsyncSession = get_db()):
 	now = datetime.now()
