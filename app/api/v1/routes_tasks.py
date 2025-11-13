@@ -60,6 +60,6 @@ async def create_daily_task(db: AsyncSession = Depends(get_db)):
 	users = await get_users_with_active_goal(db)
 	if users:
 		for user in users:
-			create_daily_task_by_id(db=db, user_id=user.id)
+			await create_daily_task_by_id(db=db, user_id=user.id)
 
 	return MessageResponse(message=f"Daily tasks for {len(users)} users has been created successfully")
