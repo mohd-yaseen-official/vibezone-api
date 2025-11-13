@@ -62,4 +62,4 @@ async def create_daily_task(db: AsyncSession = Depends(get_db)):
 		for user in users:
 			create_daily_task_by_id(db=db, user_id=user.id)
 
-	return MessageResponse(message=f"Daily tasks for {users.length} users has been created successfully")
+	return MessageResponse(message=f"Daily tasks for {len(users)} users has been created successfully")
