@@ -23,7 +23,7 @@ class Settings(BaseSettings):
     resend_from_address : str = "delivered@resend.dev"
 
     gemini_api_key : str = ""
-    ai_model : str = "gemini-2.0"
+    ai_model : str = "gemini-2.5-flash"
     
     redis_url : str = ""
 
