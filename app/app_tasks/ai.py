@@ -13,7 +13,7 @@ from app.app_tasks.models import Task
 
 client = genai.Client(api_key=settings.gemini_api_key)
 
-async def generate_next_task(goal, db: AsyncSession = get_db()):
+async def generate_next_task(db: AsyncSession, goal):
 	tasks = await db.execute(select(Task).where(Task.goal_id == goal.id))
 	prompts = create_next_task_prompt(goal, tasks)
 	resp = client.models.generate_content(

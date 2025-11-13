@@ -7,7 +7,7 @@ from fastapi_limiter.depends import RateLimiter
 from sqlalchemy.ext.asyncio import AsyncSession
 
 
-from ...app_users.crud import get_users_with_active_goal
+from app.app_users.crud import get_users_with_active_goal
 from app.core.database import get_db
 from app.core.deps import get_current_active_subscriber
 from app.app_users.models import User
@@ -50,7 +50,7 @@ async def update_task_status(task_id: UUID, db: AsyncSession = Depends(get_db), 
 	
 	await update_task(db, db_task=task, status=TaskStatus.done)
 	if task.goal.end_date == datetime.today():
-		update_goal(db=db, db_goal=task.goal, goal_in=GoalUpdate(status=GoalStatus.completed))
+		await update_goal(db=db, db_goal=task.goal, goal_in=GoalUpdate(status=GoalStatus.completed))
 		remove_user_tasks(task.goal.celery_task_ids)
 	return MessageResponse(message="Task marked as done successfully")
 

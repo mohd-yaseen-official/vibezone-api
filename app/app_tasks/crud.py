@@ -81,7 +81,7 @@ async def create_daily_task_by_id(db: AsyncSession, user_id: UUID):
 
 	last_task = await get_active_task(db, goal.id)
 	if last_task and last_task.status == TaskStatus.assigned:
-		update_task(db, last_task, TaskStatus.missed)
+		await update_task(db, last_task, TaskStatus.missed)
 		new_task = TaskCreate(
 			title=last_task.title,
 			description=last_task.description,
@@ -98,7 +98,7 @@ async def create_daily_task_by_id(db: AsyncSession, user_id: UUID):
 		await update_goal(db, db_goal=goal, goal_in=GoalUpdate(end_date=end_date))
 		return
 
-	generated_task_data = generate_next_task(goal)
+	generated_task_data = await generate_next_task(db, goal)
 	payload = TaskCreate(
 		title=generated_task_data.get("title"),
 		description=generated_task_data.get("description"),
